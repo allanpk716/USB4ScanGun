@@ -1,0 +1,17 @@
+﻿<Window x:Class="keyBoard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Closed="Window_Closed"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <TextBox x:Name="textBox" Width="auto" Height="250" VerticalScrollBarVisibility="Auto" IsReadOnly="True" />
+            </StackPanel>
+            <StackPanel>
+                <TextBox Text="" Width="300" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

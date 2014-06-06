@@ -1,0 +1,19 @@
+﻿<Window x:Class="Demo.CalibrationScanGun"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Title="CalibrationScanGun" Height="198" Width="360">
+    <Grid Height="175" Width="305">
+        <StackPanel Orientation="Vertical" Margin="0,0,0,7">
+            <StackPanel Orientation="Horizontal" Margin="10" >
+                <TextBlock VerticalAlignment="Center"  Text="扫描结果：" Width="80" />
+                <TextBox Height="23" HorizontalAlignment="Right"  Name="textBox_KeyData" VerticalAlignment="Center"  Width="200" IsReadOnly="True" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Button x:Name="Btn_Start"  Content="开始标定扫描枪" Width="80" Height="30" Margin="0,10" Click="Btn_Start_Click" />
+                <Button x:Name="Btn_OK"  Content="确认扫描枪" Width="80" Height="30" Click="Btn_OK_Click"  IsEnabled="False" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
