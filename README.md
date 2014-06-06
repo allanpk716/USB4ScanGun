@@ -27,7 +27,7 @@ Ps：关于 WPF 中 按键消息的传递顺序， ThreadFilterMessage > PreKeyD
 
 5，进过测试，在 WM_INPUT 处，handle = true 是无法屏蔽消息的，必须要在 WM_KEYDOWN 处进行屏蔽，但是···在 WM_KEYDOWN 的时候是无法获取 RawInput 的硬件信息的。
 
-6，其实我也没有能做到屏蔽指定硬件的输入信息，而是变相的做，其实很简单，在 ComponentDispatcher_ThreadFilterMessage 这里将窗体的焦点弄到一个 Labl 或者 其他静态无输入事件的控件上，之后再弄回来即可；
+6，其实我也没有能做到屏蔽指定硬件的输入信息，而是变相的做，其实很简单，在 ComponentDispatcher_ThreadFilterMessage 这里将窗体的焦点弄到一个 Labl 或者 其他静态无输入事件的控件上，然后这里会检测 扫描枪 的一个回车结束事件，这然就认为一次扫描完毕，然后之前的信息都存在一个队列中，之后就是弄出来，拼接好传到界面上显示就好了；
 
 7，对于 Demo 来说，首先你要标定扫描枪，也就是在 子界面上获取一次硬件信息，之后才能在 主界面上响应对应的逻辑；
 
