@@ -1,4 +1,4 @@
-USB4SacanGun
+USB4ScanGun
 ============
 
 USB扫描枪识别，已获取对应扫描枪返回值的测试程序。
