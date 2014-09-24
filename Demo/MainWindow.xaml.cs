@@ -105,6 +105,22 @@ namespace Demo
             //当然，在 WinForm 程序上还是有效的，所以在这里，就 在这个消息中截取
             System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage +=
                     new System.Windows.Interop.ThreadMessageEventHandler(ComponentDispatcher_ThreadFilterMessage);
+
+            DisplayMemory();
+            Console.WriteLine();
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("--- New Listener #{0} ---", i + 1);
+
+                var listener = new TestListener(new TestClassHasEvent());
+                ////listener = null; //可有可无    
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+                DisplayMemory();
+
+            }
         }
 
         //这里是为了截获 消息，主要是为了获取 deviceChange 的消息，因为在之前获取有问题
@@ -219,6 +235,41 @@ namespace Demo
             }
 
             return IntPtr.Zero;
+        }
+
+
+
+        static void DisplayMemory()
+        {
+            Console.WriteLine("Total memory: {0:###,###,###,##0} bytes", GC.GetTotalMemory(true));
+        }
+
+        class TestClassHasEvent
+        {
+            public delegate void TestEventHandler(object sender, EventArgs e);
+            public event TestEventHandler YourEvent;
+            protected void OnYourEvent(EventArgs e)
+            {
+                if (YourEvent != null) YourEvent(this, e);
+            }
+        }
+
+        class TestListener
+        {
+            byte[] m_ExtraMemory = new byte[1000000];
+
+            private TestClassHasEvent _inject;
+
+            public TestListener(TestClassHasEvent inject)
+            {
+                _inject = inject;
+                _inject.YourEvent += new TestClassHasEvent.TestEventHandler(_inject_YourEvent);
+            }
+
+            void _inject_YourEvent(object sender, EventArgs e)
+            {
+
+            }
         }
     }
 }

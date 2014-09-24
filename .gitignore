@@ -3,6 +3,8 @@
 !/Demo/bin/Debug
 /Demo/bin/Debug/*
 
+/cov-int
+
 /HideKeyEvent/obj
 /HideKeyEvent/bin/*
 !/HideKeyEvent/bin/Debug
