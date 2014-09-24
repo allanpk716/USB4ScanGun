@@ -6,6 +6,9 @@
         Title="MainWindow" Height="250" Width="760">
     <Grid>
         <StackPanel>
+            <StackPanel.Background>
+                <ImageBrush  ImageSource="/Demo;component/Resources/HeaderBg_Diluent_2.png" Stretch="None" AlignmentX="Left" AlignmentY="Top" />
+            </StackPanel.Background>
             <StackPanel Orientation="Horizontal">
                 <Label Content="正常输入：" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" />
                 <TextBox Height="23" HorizontalAlignment="Right" Name="textBox_Input" VerticalScrollBarVisibility="Auto"  Width="200"/>
