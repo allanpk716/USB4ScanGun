@@ -122,6 +122,13 @@ namespace Demo
                 DisplayMemory();
 
             }
+
+            byte[] b = new byte[10];
+
+            for (int i = 0; i < 11; i++ )
+            {
+                b[i] = (byte)i;
+            }
         }
 
         //这里是为了截获 消息，主要是为了获取 deviceChange 的消息，因为在之前获取有问题
