@@ -15,6 +15,7 @@ using RawInput_dll;
 using System.Windows.Threading;
 using System.Windows.Interop;
 using System.Threading;
+using Microsoft.Win32;
 
 namespace Demo
 {
@@ -262,9 +263,13 @@ namespace Demo
 
             public TestListener(TestClassHasEvent inject)
             {
-                _inject = inject;
-                _inject.YourEvent += new TestClassHasEvent.TestEventHandler(_inject_YourEvent);
+                SystemEvents.DisplaySettingsChanged += new EventHandler(SystemEvents_DisplaySettingsChanged);
             }
+
+            void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
+            {
+
+            } 
 
             void _inject_YourEvent(object sender, EventArgs e)
             {
