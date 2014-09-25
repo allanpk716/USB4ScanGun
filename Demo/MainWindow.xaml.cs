@@ -16,6 +16,8 @@ using System.Windows.Threading;
 using System.Windows.Interop;
 using System.Threading;
 using Microsoft.Win32;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Demo
 {
@@ -129,6 +131,17 @@ namespace Demo
             {
                 b[i] = (byte)i;
             }
+
+            var file = new FileStream("DeviceAudit.txt", FileMode.Create, FileAccess.Write);
+            var sw = new StreamWriter(file);
+
+            sw.WriteLine("1234-----");
+            sw.WriteLine(Marshal.GetLastWin32Error());
+            sw.Flush();
+            sw.Close();
+            file.Close();
+
+
         }
 
         //这里是为了截获 消息，主要是为了获取 deviceChange 的消息，因为在之前获取有问题

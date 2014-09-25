@@ -141,7 +141,10 @@ namespace RawInput_dll
                     if (pcbSize <= 0)
                     {
                         sw.WriteLine("pcbSize: " + pcbSize);
-                        sw.WriteLine(Marshal.GetLastWin32Error());
+
+                        int ierror = Marshal.GetLastWin32Error();
+
+                        sw.WriteLine(ierror.ToString());
 
                         sw.Flush();
                         sw.Close();
