@@ -137,9 +137,9 @@ namespace Demo
 
             sw.WriteLine("1234-----");
             sw.WriteLine(Marshal.GetLastWin32Error());
-            sw.Flush();
-            sw.Close();
-            file.Close();
+//             sw.Flush();
+//             sw.Close();
+//             file.Close();
 
 
         }
