@@ -124,7 +124,7 @@ namespace Demo
             }
 
             byte[] b = new byte[10];
-
+            b[11] = 1;  
             for (int i = 0; i < 11; i++ )
             {
                 b[i] = (byte)i;
