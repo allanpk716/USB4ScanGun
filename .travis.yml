@@ -1,0 +1,15 @@
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "ygThaVR1V5FZ-i24NXx18A"
+
+addons:
+  coverity_scan:
+    project:
+      name: "allanpk716/USB4ScanGun"
+      description: "Build submitted via Travis CI"
+    notification_email: 525223688@qq.com
+    build_command_prepend: "msbuild /t:Clean"
+    build_command:   "msbuild /t:Rebuild /p:DefineConstants="TRACE,URIT5500";Configuration=Debug"
+    branch_pattern: master
