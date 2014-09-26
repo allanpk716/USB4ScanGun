@@ -11,5 +11,5 @@ addons:
       description: "Build submitted via Travis CI"
     notification_email: 525223688@qq.com
     build_command_prepend: "msbuild /t:Clean"
-    build_command:   "msbuild /t:Rebuild /p:DefineConstants='TRACE,URIT5500';Configuration=Debug"
+    build_command:   "msbuild /t:Rebuild"
     branch_pattern: master
